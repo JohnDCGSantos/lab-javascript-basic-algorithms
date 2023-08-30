@@ -1,68 +1,117 @@
 // Iteration 1: Names and Input
-const hacker1 = "Bob"
+let hacker1 = 'João'
+console.log(`The driver's name is: ${hacker1}`)
 
-const hacker2 = "Eva"
-
-console.log(`The driver's name is  ${hacker1}, and the navigator's name is ${hacker2}`)
+let hacker2 = 'Ana'
+console.log(`The navigator's name is: ${hacker2}`)
 
 // Iteration 2: Conditionals
-const length1= hacker1.length
-const length2= hacker2.length
 
-if (length1 > length2){
-  console.log(`The driver has the longest name, it has ${length1} characters`)
-}else if (length1 < length2){
- console.log(`The navigator has the longest name, it has ${length2} characters`) 
-}else
-  console.log(`Wow, you both have equally long names, ${length1}`);
-
+if (hacker1.length > hacker2.length) {
+  console.log(`The driver has the longest name, it has ${[hacker1.length]} characters.`)
+} else if (hacker1.length < hacker2.length) {
+  console.log(
+    `It seems that the navigator has the longest name, it has ${[hacker2.length]} characters.`
+  )
+} else {
+  console.log(`Wow, you both have equally long names, ${[hacker1.length]} characters!.`)
+}
 // Iteration 3: Loops
-let separatedName= ""
-for (let i=0; i < hacker1.length; i++){
-  separatedName += hacker2[i].toUpperCase() + " "
-}
-console.log(separatedName)
 
-let reversedName= ""
-for(let i= hacker2.length - 1; i >= 0; i--) {
- reversedName += hacker2[i]
-}
- console.log(reversedName);
+let driverCapitals = ''
 
+for (let i = 0; i < hacker1.length; i++) {
+  let upperCaseLetter = hacker1[i].toUpperCase()
 
-
-for (let i = 0; i < hacker1.length || i < hacker2.length; i++) {
-  if (hacker1[i] < hacker2[i]) {
-    result = "The driver's name goes first.";
-    break;
-  } else if (hacker1[i] > hacker2[i]) {
-    result = "Yo, the navigator goes first, definitely.";
-    break;
-  } else if (i === hacker1.length - 1 && i === hacker2.length - 1) {
-    result = "What?! You both have the same name?";
+  // if it is the first letter to be added, then add it without the space
+  if (i === 0) {
+    driverCapitals = driverCapitals + upperCaseLetter
+  } else {
+    driverCapitals = driverCapitals + ' ' + upperCaseLetter
   }
 }
-console.log(result)
+console.log('driverCapitals: ', driverCapitals)
+
+//3.2
+let reversedName = ''
+
+for (let i = hacker1.length - 1; i >= 0; i = i - 1) {
+  let upperCaseLetter = hacker1[i].toUpperCase()
+
+  if (i === 3) {
+    reversedName = reversedName + upperCaseLetter
+  } else {
+    reversedName = reversedName + ' ' + upperCaseLetter
+  }
+}
+console.log('reversedName: ', reversedName)
+
+//3.3
+
+//for this i need to use .toUpperCase, because if a name have capital and the same name without capital, JS will choose the capital one. So we put both names in capital.
+let hacker1Capital = hacker1.toUpperCase
+let hacker2Capital = hacker2.toUpperCase
+
+let comparation = hacker1.localeCompare(hacker2)
+if (comparation === 0) {
+  console.log('Both have the same')
+} else if (comparation === -1) {
+  console.log(`Driver goes first, is ${hacker1}`)
+} else {
+  console.log(`Navigator goes first, is ${hacker2}`)
+}
 
 //Bonus 1
+let longText =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper massa nisi. Donec fermentum, massa ut dapibus posuere, quam purus mollis felis, vitae fermentum urna augue et mi. Aenean ante eros, mattis eget vestibulum vitae, rhoncus eu nulla. Fusce vitae ligula at purus rutrum blandit sit amet eget ligula. Praesent dictum rutrum sapien, a sagittis risus. Aliquam mattis varius commodo. Cras ullamcorper aliquam neque, ut aliquam velit vestibulum vehicula. Sed enim neque, aliquet in egestas in, mollis sed ex. Aenean dapibus tempus tincidunt. Donec vitae metus mi. Vestibulum viverra fermentum ultricies. Nulla accumsan dui magna, a posuere quam posuere id. Fusce dignissim mollis erat. Proin velit ex, tincidunt in vestibulum sed, mattis vel nulla. Suspendisse tellus ligula, rhoncus ut vestibulum at, congue et turpis. Mauris ut ipsum laoreet, sodales nibh placerat, commodo nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus gravida convallis lorem sit amet ultrices. Mauris faucibus libero id hendrerit rhoncus. Pellentesque vitae ex risus. Vestibulum ac purus leo. Quisque eget quam pharetra, pretium augue fermentum, aliquet mi. Quisque metus lacus, tincidunt vel feugiat a, convallis quis diam. Phasellus eleifend neque ultrices elit pretium convallis. Donec a nisl convallis, sollicitudin ex vitae, viverra urna. Mauris rhoncus tellus non ex ultricies dapibus.'
+let wordCount = 0
 
-const longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis facilisis diam. Aenean lobortis nibh eu finibus interdum. Praesent vulputate ligula lorem, id pellentesque ipsum vulputate quis. Fusce placerat sit amet nulla vitae fermentum. Vestibulum aliquet dolor vitae suscipit pellentesque. Praesent ornare fringilla erat nec bibendum. Suspendisse dictum sed lacus eget viverra. Nunc vel nunc eget risus rhoncus ultricies in id velit. Fusce sodales, dui eu vulputate commodo, odio nisi consectetur nunc, quis gravida augue lorem id mi. Pellentesque eleifend diam pretium imperdiet congue. Aliquam id euismod quam. Nullam facilisis aliquet mi non tincidunt.Praesent congue ipsum risus, sed hendrerit erat venenatis at. Suspendisse vehicula rutrum risus, nec venenatis dui efficitur in. Vestibulum placerat sapien ac nisl congue, non ornare massa consequat. Phasellus tincidunt volutpat imperdiet. Mauris in dolor a tellus blandit ultrices id in libero. Integer rutrum vestibulum luctus. Pellentesque nec maximus magna. Suspendisse vitae orci nunc. Vestibulum pellentesque convallis quam sagittis facilisis. Nulla et erat neque. Morbi in mi ultrices, molestie dui vel, sollicitudin urna. Nam ac diam congue, pulvinar arcu non, aliquet turpis. In mollis dignissim blandit. Pellentesque dui ex, tincidunt id tristique vitae, rutrum eu erat. Nunc et lacus purus. Vivamus pellentesque quis nunc vel congue. Nullam blandit sit amet turpis id fermentum."
+//counting words by spaces
+for (let i = 0; i < longText.length; i++) {
+  if (longText[i] === ' ') {
+    wordCount++
+  }
+}
 
-console.log(longText)
+//last word have no space so we add one wordCount
+wordCount++
 
-const words = longText.split(/\s+/).length;
+console.log('Number of words: ', wordCount)
 
-console.log(words);
-//206
+//1.2
+let etCount = 0
 
-constArray= longText.split(/\s+/);
+for (let i = 0; i < longText.length; i++) {
+  // counts if current letter is "e" and the next letter is "t"
+  if (longText[i] === 'e' && longText[i + 1] === 't') {
+    etCount++
+  }
+}
+console.log("Number of 'et': ", etCount)
 
-const target = "et";
+//Bonus2
+let phraseToCheck = 'taco cat'
 
-const filterWords = constArray.filter(constArray => constArray === target);
+// first we create a clean variable with all special characters removed.
 
-const count= filterWords.length;
+let cleanPhrase = ''
+for (let i = 0; i < phraseToCheck.length; i++) {
+  // only add characters between "A" and "z"
 
-console.log(` "${target}" appears ${count} times`);
-//2
+  if (phraseToCheck[i] >= 'A' && phraseToCheck[i] <= 'z') {
+    cleanPhrase = cleanPhrase + phraseToCheck[i]
+  }
+}
+console.log('CleanPhrase: ', cleanPhrase)
 
+let reversedPhrase = ''
+for (let i = cleanPhrase.length - 1; i >= 0; i--) {
+  reversedPhrase = reversedPhrase + cleanPhrase[i]
+}
+console.log('ReversedPhrase: ', reversedPhrase)
+
+if (cleanPhrase === reversedPhrase) {
+  console.log('The phrase is a palindrome!')
+} else {
+  console.log('The phrase is not a palindrome')
+}
